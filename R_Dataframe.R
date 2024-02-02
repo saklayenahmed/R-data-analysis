@@ -1,8 +1,11 @@
 #get working directory
 getwd()
 
+#set working directory
+setwd("D:\\Software\\Code\\R\\R-data-analysis")
+
 #load csv file
-data <- read.csv("dataframe_data.csv")
+data <- read.csv("dataframe_data_02.csv")
 
 #check loaded data
 head(data)
@@ -19,7 +22,7 @@ data$Year
 temp <- factor(data$Year)
 temp
 
-#check unique values in this spcific column
+#check unique values in this specific column
 levels(temp)
 
 #filtering the year 1960

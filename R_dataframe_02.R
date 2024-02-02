@@ -1,10 +1,10 @@
-
+#load data by file choose option
 #stats <- read.csv(file.choose())
 #stats
 
 #work directory
 getwd()
-setwd("D:\\Software\\Code\\R\\data_analysis_by_R")
+setwd("D:\\Software\\Code\\R\\R-data-analysis")
 
 
 #remove data
