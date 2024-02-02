@@ -5,7 +5,7 @@ getwd()
 setwd("D:\\Software\\Code\\R\\R-data-analysis")
 
 #load csv file
-data <- read.csv("dataframe_data_02.csv")
+data <- read.csv("data/dataframe_data_02.csv")
 
 #check loaded data
 head(data)

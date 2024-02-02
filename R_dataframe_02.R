@@ -11,7 +11,7 @@ setwd("D:\\Software\\Code\\R\\R-data-analysis")
 rm(stats)
 
 #load csv file
-stats <- read.csv("dataframe_data.csv")
+stats <- read.csv("data/dataframe_data.csv")
 stats
 
 
