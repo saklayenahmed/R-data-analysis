@@ -88,3 +88,64 @@ s + geom_histogram(binwidth = 5)
 #add color
 s + geom_histogram(binwidth = 10, fill="Red")
 s + geom_histogram(binwidth = 10, aes(fill=Genre))
+
+#add border
+s + geom_histogram(binwidth = 10, aes(fill=Genre), colour="Black")
+
+
+#density chart
+s + geom_density(aes(fill=Genre))
+s + geom_density(aes(fill=Genre), position="stack")
+
+#layers
+t <- ggplot(data=movie, aes(x=AudienceRating))
+t + geom_histogram(binwidth = 10, fill="white", colour="blue")
+
+#another way layers
+t = ggplot(data=movie)
+t +geom_histogram(binwidth = 10, colour="blue", fill="white", aes(x=AudienceRating))
+t +geom_histogram(binwidth = 10, colour="blue", fill="white", aes(x=CriticRatings))
+
+
+#----------statistical transformation
+u <- ggplot(data = movie, aes(x=CriticRatings, y = AudienceRating, colour=Genre))
+
+u + geom_point() + geom_smooth(fill=NA)
+
+#boxplots
+u <- ggplot(data = movie, aes(x=Genre, y=AudienceRating, colour=Genre))
+u + geom_boxplot()
+u + geom_boxplot(size=1.2)
+u + geom_boxplot(size=1.2) + geom_point()
+u + geom_boxplot(size=.9) + geom_jitter()
+u + geom_jitter() + geom_boxplot(size=1, alpha=0.5)
+
+
+
+#--------Facets
+v <- ggplot(data = movie, aes(x=Budget))
+v + geom_histogram(binwidth = 10, colour="black", aes(fill=Genre))
+
+v + geom_histogram(binwidth = 10, colour="black", aes(fill=Genre)) +
+  facet_grid(Genre~., scales = "free") + ylab("Genre Count")
+
+
+# facets in scattered plot
+
+w <- ggplot(data=movie, aes(x=CriticRatings, y=AudienceRating, colour=Genre))
+w + geom_point(size=3) +
+  facet_grid(.~Year)
+
+w + geom_point(size=3) +
+  facet_grid(Genre~Year)
+
+w + geom_point(size=3) +
+  facet_grid(Genre~.)
+
+w + geom_point(size=3) +
+  geom_smooth() +
+  facet_grid(Genre~Year)
+
+w + geom_point(aes(size=Budget)) +
+  geom_smooth() +
+  facet_grid(Genre~Year)
