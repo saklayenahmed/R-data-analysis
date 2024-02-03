@@ -149,3 +149,87 @@ w + geom_point(size=3) +
 w + geom_point(aes(size=Budget)) +
   geom_smooth() +
   facet_grid(Genre~Year)
+
+
+#---------Coordinates
+
+m <- ggplot(data = movie, aes(x=CriticRatings, y=AudienceRating, size=Budget, colour=Genre))
+m + geom_point()
+m + geom_point() +
+  xlim(50,100) + 
+  ylim(50,100) 
+
+# wont work while
+
+n <- ggplot(data=movie, aes(x=Budget))
+n+ geom_histogram(binwidth = 10, aes(fill=Genre), colour="black")
+
+n+ geom_histogram(binwidth = 10, aes(fill=Genre), colour="black") +
+  ylim(0,100)
+
+#zoom in
+n + geom_histogram(binwidth = 10, aes(fill=Genre), colour="black") +
+  coord_cartesian(ylim=c(0,50))
+
+#improve w vector
+w + geom_point(aes(size=Budget)) +
+  geom_smooth() +
+  facet_grid(Genre~Year) +
+  coord_cartesian(ylim=c(0,100))
+
+
+#----------theme
+o <- ggplot(data = movie, aes(x=Budget))
+h <- o + geom_histogram(binwidth = 10, aes(fill=Genre), colour="black")
+h
+
+#axis label
+
+h + xlab("Money") +
+  ylab("Number of Movies")
+
+
+#label Formatting
+h + xlab("Money") +
+  ylab("Number of Movies")+
+  theme(axis.title.x = element_text(colour = "DarkGreen", size=30), axis.title.y = element_text(color = "Red", size=30))
+
+#tick mark Formatting
+h + xlab("Money") +
+  ylab("Number of Movies")+
+  theme(
+    axis.title.x = element_text(colour = "DarkGreen", size=30), 
+    axis.title.y = element_text(color = "Red", size=30), 
+    axis.text.x = element_text(size=20),
+    axis.text.y = element_text(size=20))
+
+
+#legends Formatting
+h + xlab("Money") +
+  ylab("Number of Movies")+
+  theme(
+    axis.title.x = element_text(colour = "DarkGreen", size=30), 
+    axis.title.y = element_text(color = "Red", size=30), 
+    axis.text.x = element_text(size=20),
+    axis.text.y = element_text(size=20),
+    legend.title = element_text(size=30),
+    legend.text = element_text(size=20),
+    legend.position = c(1,1),
+    legend.justification = c(1,1))
+
+
+
+#Title and theme of plot
+h + xlab("Money") +
+  ylab("Number of Movies")+
+  ggtitle("Movie Budget Distribution")+
+  theme(
+    axis.title.x = element_text(colour = "DarkGreen", size=30), 
+    axis.title.y = element_text(color = "Red", size=30), 
+    axis.text.x = element_text(size=20),
+    axis.text.y = element_text(size=20),
+    legend.title = element_text(size=30),
+    legend.text = element_text(size=20),
+    legend.position = c(1,1),
+    legend.justification = c(1,1),
+    plot.title = element_text(colour = "DarkGreen", size=30, family = "Courier"))
