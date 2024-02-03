@@ -1,7 +1,7 @@
-file_name <- "P2-Movie-Ratings.csv"
+file_name <- "movie_data.csv"
 
 getwd()
-setwd("D:\\Software\\Code\\R\\Udemy")
+setwd("__working__directory__")
 
 #data
 movie <- read.csv(file_name)
@@ -112,7 +112,7 @@ u <- ggplot(data = movie, aes(x=CriticRatings, y = AudienceRating, colour=Genre)
 
 u + geom_point() + geom_smooth(fill=NA)
 
-#boxplots
+#box plots
 u <- ggplot(data = movie, aes(x=Genre, y=AudienceRating, colour=Genre))
 u + geom_boxplot()
 u + geom_boxplot(size=1.2)
